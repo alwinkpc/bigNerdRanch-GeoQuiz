@@ -25,6 +25,7 @@ public class CheatActivity extends AppCompatActivity {
     private TextView mAnswerTextView;
     private Button mShowAnswer;
     private boolean mIsAnswerCheated;
+    private TextView mApiLevel;
 
     /**
      * Creates an Intent with the class extra data wrapped
@@ -62,6 +63,11 @@ public class CheatActivity extends AppCompatActivity {
 
         mAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
         mAnswerTextView = (TextView) findViewById(R.id.answer_text_view);
+        mApiLevel = (TextView) findViewById(R.id.api_level);
+
+        // Api version label
+        Integer apiLevel = Integer.valueOf(Build.VERSION.SDK_INT);
+        mApiLevel.setText("Api level ".concat(apiLevel.toString()));
 
         // Was the answer actually cheated?
         mShowAnswer = (Button) findViewById(R.id.show_answer_button);
